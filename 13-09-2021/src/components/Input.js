@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Table from './Table';
 
 export default class Input extends Component {
     constructor(props) {
@@ -32,20 +33,7 @@ export default class Input extends Component {
                 <div className="d-flex justify-content-center mt-3">
                     <button className="btn btn-primary" onClick={this.updateItems}>Add item</button>
                 </div>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Task list</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.items.map((element) =>
-                            <tr key={element}>
-                                <td>{element}</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+                <Table itemsArr = {this.state.items}/>
             </div>
         )
     }
