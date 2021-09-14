@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 
 export default class Table extends Component {
-    
+
     render() {
-        let {itemsArr} = this.props
+        let { itemsArr } = this.props
         return (
-            <table className="table">
+            <div className="container" style={{ width: "400px" }}>
+                <table className="table">
                     <thead>
                         <tr>
                             <th>Task list</th>
@@ -13,12 +14,13 @@ export default class Table extends Component {
                     </thead>
                     <tbody>
                         {itemsArr.map((element) =>
-                            <tr key={element}>
+                            <tr key={Math.random()}>
                                 <td>{element}</td>
                             </tr>
                         )}
                     </tbody>
                 </table>
+            </div>
         )
     }
 }
