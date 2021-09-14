@@ -1,6 +1,6 @@
 
 import './App.css';
-import Input from './components/Input';
+import Form from './components/Form';
 import Table from './components/Table';
 
 import React, { Component } from 'react'
@@ -15,7 +15,8 @@ export default class App extends Component {
   updateValue = (event) => {
     this.setState({ newItem: event.target.value });
   }
-  updateItems = () => {
+  updateItems = (e) => {
+    e.preventDefault()
     let arr = this.state.items;
     if (this.state.newItem !== "") {
       arr.push(this.state.newItem);
@@ -31,8 +32,8 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Input updateItems={this.updateItems} val={this.state.newItem} updateValue={this.updateValue} />
-        <Table itemsArr={this.state.items} />
+        <Form updateItems={this.updateItems} val={this.state.newItem} updateValue={this.updateValue} />
+        <Table itemsArr={this.state.items} />   
       </div>
     )
   }

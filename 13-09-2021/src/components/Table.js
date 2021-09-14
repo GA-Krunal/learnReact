@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-
+import { Grid } from '@material-ui/core'
 export default class Table extends Component {
 
     render() {
         let { itemsArr } = this.props
         return (
-            <div className="container" style={{ width: "400px" }}>
-                <table className="table">
+            <Grid container direction="column" alignItems="center" justify = "center" >
+                <table className="table" style={{ width: "400px" , marginTop:"20px" }}>
                     <thead>
                         <tr>
                             <th>Task list</th>
@@ -14,13 +14,13 @@ export default class Table extends Component {
                     </thead>
                     <tbody>
                         {itemsArr.map((element) =>
-                            <tr key={Math.random()}>
+                            <tr key={Math.random()} style={{textAlign:"center"}}>
                                 <td>{element}</td>
                             </tr>
                         )}
                     </tbody>
                 </table>
-            </div>
+            </Grid>
         )
     }
 }
