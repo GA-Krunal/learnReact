@@ -10,10 +10,10 @@ export default class Form extends Component {
         let { updateItems, updateValue, val } = this.props
         return (
 
-            <Grid container direction="column" alignItems="center" justify="center">
+            <Grid container direction="column" alignItems="center" justifyContent="center">
                 <form onSubmit={updateItems} style={{ marginTop: "10px" }}>
-                    <TextField id="outlined-basic" label="enter task name here" color ="primary" size="small" variant="outlined" value={val} onChange={updateValue} />
-                    <Grid container direction="column" alignItems="center" justify="center" >
+                    <TextField id="outlined-basic" label="enter task name here" color="primary" size="small" variant="outlined" value={val} onChange={updateValue} />
+                    <Grid container direction="column" alignItems="center" justifyContent="center" >
                         <Button color="primary" variant="contained" type="submit" style={{ marginTop: "20px" }}>Add item</Button>
                     </Grid>
                 </form>
