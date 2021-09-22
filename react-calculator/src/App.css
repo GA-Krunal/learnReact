@@ -1,0 +1,23 @@
+body{
+  background-color: rgb(0, 0, 0);
+}
+.App{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 50px; */
+
+}
+.calc-wrapper{
+  background-color: white;
+  width: 400px;
+  border-radius: 18px;
+}
+.row{
+  display: flex;
+}
+.heading{
+  text-align: center;
+  color: azure;
+}
+
