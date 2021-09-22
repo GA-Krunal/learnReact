@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './App.css';
 import Button from './components/Button';
 import Input from './components/Input';
@@ -10,19 +9,15 @@ function App() {
   const [result, setResult] = useState("");
 
   const addToText = (val) => {
-  //   if (!text.endsWith(val)) {
-  //     text += val
-  // }
-  // console.log(val)
-  // console.log(typeof text , "me")
-  let myArr = ["+","-","*","/",".","^","%"]
-  console.log(text[text.length-1] , "last element")
-  console.log(val , "new element")
-  if (myArr.includes(text[text.length-1]) && myArr.includes(val) && text[text.length-1]!=="%") {
+
+    let myArr = ["+", "-", "*", "/", ".", "^", "%"]
+    console.log(text[text.length - 1], "last element")
+    console.log(val, "new element")
+    if (myArr.includes(text[text.length - 1]) && myArr.includes(val) && text[text.length - 1] !== "%") {
       console.log("duplicate operator not allowed")
     }
-    else{
-      setText((text) => [...text, val ]);
+    else {
+      setText((text) => [...text, val]);
     }
   }
   const resetInput = () => {
@@ -62,42 +57,42 @@ function App() {
   return (
     <>
       <h1 className="heading">Calculator</h1>
-    <div className="App">
-      <div className="calc-wrapper">
-        <Input text={text} result={result} />
-        <div className="row">
-          <Button symbol="7" handleClick={addToText} />
-          <Button symbol="8" handleClick={addToText} />
-          <Button symbol="9" handleClick={addToText} />
-          <Button symbol="/" handleClick={addToText} color="rgb(103, 215, 235)" />
-        </div>
-        <div className="row">
-          <Button symbol="4" handleClick={addToText} />
-          <Button symbol="5" handleClick={addToText} />
-          <Button symbol="6" handleClick={addToText} />
-          <Button symbol="*" handleClick={addToText} color="rgb(103, 215, 235)" />
-        </div>
-        <div className="row">
-          <Button symbol="1" handleClick={addToText} />
-          <Button symbol="2" handleClick={addToText} />
-          <Button symbol="3" handleClick={addToText} />
-          <Button symbol="+" handleClick={addToText} color="rgb(103, 215, 235)" />
-        </div>
-        <div className="row">
-          <Button symbol="0" handleClick={addToText} />
-          <Button symbol="." handleClick={addToText} />
-          <Button symbol="=" handleClick={calculateResult} color="rgb(75, 189, 135)" />
-          <Button symbol="-" handleClick={addToText} color="rgb(103, 215, 235)" />
-        </div>
-        <div className="row">
-          <Button symbol="AC" handleClick={resetInput} color="rgb(243, 31, 66)" />
-          <Button symbol="C" handleClick={backspace} color="rgb(243, 31, 66)" />
-          <Button symbol="%" handleClick={addToText} color="rgb(103, 215, 235)" />
-          <Button symbol="^" handleClick={addToText} color="rgb(103, 215, 235)" />
-        </div>
+      <div className="App">
+        <div className="calc-wrapper">
+          <Input text={text} result={result} />
+          <div className="row">
+            <Button symbol="7" handleClick={addToText} />
+            <Button symbol="8" handleClick={addToText} />
+            <Button symbol="9" handleClick={addToText} />
+            <Button symbol="/" handleClick={addToText} color="rgb(103, 215, 235)" />
+          </div>
+          <div className="row">
+            <Button symbol="4" handleClick={addToText} />
+            <Button symbol="5" handleClick={addToText} />
+            <Button symbol="6" handleClick={addToText} />
+            <Button symbol="*" handleClick={addToText} color="rgb(103, 215, 235)" />
+          </div>
+          <div className="row">
+            <Button symbol="1" handleClick={addToText} />
+            <Button symbol="2" handleClick={addToText} />
+            <Button symbol="3" handleClick={addToText} />
+            <Button symbol="+" handleClick={addToText} color="rgb(103, 215, 235)" />
+          </div>
+          <div className="row">
+            <Button symbol="0" handleClick={addToText} />
+            <Button symbol="." handleClick={addToText} />
+            <Button symbol="=" handleClick={calculateResult} color="rgb(75, 189, 135)" />
+            <Button symbol="-" handleClick={addToText} color="rgb(103, 215, 235)" />
+          </div>
+          <div className="row">
+            <Button symbol="AC" handleClick={resetInput} color="rgb(243, 31, 66)" />
+            <Button symbol="C" handleClick={backspace} color="rgb(243, 31, 66)" />
+            <Button symbol="%" handleClick={addToText} color="rgb(103, 215, 235)" />
+            <Button symbol="^" handleClick={addToText} color="rgb(103, 215, 235)" />
+          </div>
 
+        </div>
       </div>
-    </div>
     </>
   );
 }
