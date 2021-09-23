@@ -24,15 +24,6 @@ function App() {
     setText("");
     setResult("");
   }
-  const evalPercentage = (ip, index1, index2) => {
-    if (index1 !== 0) {
-      index1 = index1 + 1;
-    }
-    let str = ip.slice(index1, index2)
-    let rmvStr = ip.slice(index1, index2 + 1)
-    let x = Number(str) / 100;
-    return ip.replace(rmvStr, x);
-  }
   const calculateResult = () => {
     try {
       let input = text.join("").replace("^", "**");
@@ -43,7 +34,21 @@ function App() {
             a = i;
           }
         }
-        input = evalPercentage(input, a, input.indexOf("%"))
+        if (a === 0) {
+          const str = input.slice(a, input.indexOf("%"))
+          const rmvStr = input.slice(a, input.indexOf("%") + 1)
+          const x = Number(str) / 100;
+          input = input.replace(rmvStr, x);
+        }
+        else {
+
+          const str = input.slice(a + 1, input.indexOf("%"))
+          const rmvStr = input.slice(a + 1, input.indexOf("%") + 1)
+          const x = Number(str) * Number(eval(input.slice(0, a))) / 100;
+          console.log(x, "x");
+          input = input.replace(rmvStr, x);
+          console.log(input, "ip");
+        }
       }
       setResult(eval(input))
     } catch (err) {
