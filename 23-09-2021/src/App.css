@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  width: 800px;
+  margin-top: 10px;
+  border: 2px solid black;
+}
+td{
+  background-color: rgb(131, 172, 190);
+}
+
