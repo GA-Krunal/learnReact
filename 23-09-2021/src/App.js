@@ -28,7 +28,6 @@ function App() {
       const obj = { firstName: fName, lastName: lName }
       let val = [...data, obj]
       setData(val);
-      console.log(data, "data")
       setfName("");
       setlName("");
     }
