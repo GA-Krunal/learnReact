@@ -32,6 +32,10 @@ export default class Counter extends Component {
         },1500)
         console.log("------------------")
     }
+    // componentWillMount() {
+    //     console.log("*********************")
+    // }
+    
     // componentWillUpdate(nextProps, nextState) {
     //     console.log("componentWillUpdate")
     //     console.log("------------------")
