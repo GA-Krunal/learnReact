@@ -7,6 +7,7 @@ import {
 import './App.css';
 import Dashboard from "./components/Dashboard";
 import Login from './components/Login';
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return ( 
@@ -15,9 +16,9 @@ function App() {
         <Route exact path="/">
           <Login />
         </Route>
-        <Route exact path="/dashboard">
+        <PrivateRoute exact path="/dashboard">
           <Dashboard />
-        </Route>
+        </PrivateRoute>
       </Switch>
     </Router>
   );
