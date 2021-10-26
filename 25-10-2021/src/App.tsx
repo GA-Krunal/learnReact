@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App: FC = () => {
   const [task, setTask] = useState<string>("");
@@ -16,8 +18,14 @@ const App: FC = () => {
     setTask(event.target.value);
   }
   const addTask = (): void => {
-    setList([...list, task])
-    setTask("");
+    if(task===""){
+      toast("Input can not be empty");
+    }
+    else{
+      setList([...list, task])
+      setTask("");
+    }
+   
   }
   const deleteTask = (delItem: string): void => {
     setList(list.filter((item) => { return item !== delItem }))
@@ -28,14 +36,20 @@ const App: FC = () => {
     setTask(edItem);
   }
   const save = (): void => {
-    list[index] = task
-    setList(list);
-    setTask("");
-    setEditing(false)
+    if(task===""){
+      toast("Input can not be empty");
+    }
+    else{
+      list[index] = task
+      setList(list);
+      setTask("");
+      setEditing(false)
+    }
   }
   return (
     <>
       <div className="App">
+      <ToastContainer />
         <Box
           sx={{
             display: 'flex',
