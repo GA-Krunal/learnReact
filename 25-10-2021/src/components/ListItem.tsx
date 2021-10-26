@@ -1,3 +1,7 @@
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { TableCell, TableRow } from '@mui/material';
 interface Props {
     item: string;
     deleteTask(delItem: string): void
@@ -5,11 +9,12 @@ interface Props {
 }
 const ListItem = ({ item, deleteTask, editTask }: Props) => {
     return (
-        <>
-            <h2>{item}</h2>
-            <button onClick={() => deleteTask(item)}>delete</button>
-            <button onClick={() => editTask(item)}>edit</button>
-        </>
+        <TableRow>
+
+            <TableCell>{item}</TableCell>
+            <TableCell><Button variant="contained" color="secondary" onClick={() => deleteTask(item)}><DeleteIcon /></Button></TableCell>
+            <TableCell><Button variant="contained" onClick={() => editTask(item)}><EditIcon /></Button></TableCell>
+        </TableRow>
     )
 }
 

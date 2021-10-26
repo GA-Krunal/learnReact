@@ -1,6 +1,10 @@
 import { FC, ChangeEvent, useState } from 'react';
 import './App.css';
 import ListItem from './components/ListItem';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 
 const App: FC = () => {
   const [task, setTask] = useState<string>("");
@@ -31,12 +35,27 @@ const App: FC = () => {
   }
   return (
     <>
-      <div>
-        <input type="text" placeholder="enter task" value={task} onChange={handleChange} />
-        {editing ? <button onClick={save}>save changes</button> :
-          <button onClick={addTask}>add task</button>}
-      </div>
-      <div>
+      <div className="App">
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            '& > :not(style)': {
+              m: 1,
+              width: 400,
+              height: 128,
+            },
+          }}
+        >
+          <Paper elevation={3}>
+            <div className="input">
+              <TextField id="outlined-basic" label="Enter Task" value={task} onChange={handleChange} variant="standard" required />
+              {editing ?
+                <Button className="Btn" variant="contained" onClick={save}>save changes</Button> :
+                <Button className="Btn" variant="contained" onClick={addTask}>Add Task</Button>}
+            </div>
+          </Paper>
+        </Box>
         {list.map((item: string, key: number) => {
           return <ListItem key={key} item={item} deleteTask={deleteTask} editTask={editTask} />;
         })}
