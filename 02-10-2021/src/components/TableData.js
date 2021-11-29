@@ -1,82 +1,57 @@
-import * as React from 'react';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { TextField } from '@mui/material';
+// import * as React from 'react';
+// import { DataGrid } from '@mui/x-data-grid';
+// import { useState } from 'react';
+// import FakeData from './FakeData';
+// import InfiniteScroll from 'react-infinite-scroll-component';
+// import Button from '@mui/material/Button';
 
-export default function TableData() {
-    const [posts, setPosts] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
-    useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/photos')
-            .then(res => {
-                setPosts(res.data);
-            })
-    }, [])
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+// const columns = [
+//   { field: 'coursename', headerName: 'courseName', width: 70 },
+//   { field: 'coursedetails', headerName: 'courseDetails', width: 130 },
+//   { field: 'buyer', headerName: 'Buyer', width: 130 },
+//   { field: 'exam', headerName: 'Buyer', width: 130 },
+//   { field: 'price', headerName: 'Price', width: 130 },
+//   { field: 'lectures', headerName: 'Lectures', width: 130 },
+//   { field: 'actions', headerName: 'Actions', width: 130 },
+// ];
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
+// export default function TableData() {
+//     const [start, setStart] = useState(10)
+//     const [isPublished, setIsPublished] = useState(true)
+//     const [end, setEnd] = useState(20)
+//     const [myArr, setMyArr] = useState(FakeData.slice(0, 20))
+//     // .filter(el=>el.ispublished===isPublished)
+//     // const rows = myArr.filter(el=>el.ispublished===isPublished)
+//     const fetchData = () => {
+//         setStart(start + 10)
+//         setEnd(end + 10)
+//         setTimeout(() => {
 
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value);
-        setPage(0);
-    };
-
-    return (
-        <>
-            <h2>Table With Search And Pagination</h2>
-            <TextField id="standard-basic" label="search here.." variant="standard" style={{ float: 'left', marginBottom: "10px", marginTop: "5px" }} onChange={(e) => { setSearchTerm(e.target.value) }} />
-            <Paper sx={{ width: '100%', overflow: 'hidden' }} >
-                <TableContainer sx={{ maxHeight: 440 }}>
-                    <Table stickyHeader aria-label="sticky table" >
-                        <TableHead >
-                            <TableRow>
-                                <TableCell style={{ backgroundColor: "black", color: "white" }}>Album id</TableCell>
-                                <TableCell style={{ backgroundColor: "black", color: "white" }}>id</TableCell>
-                                <TableCell style={{ backgroundColor: "black", color: "white" }}>title</TableCell>
-                                <TableCell style={{ backgroundColor: "black", color: "white" }}>url</TableCell>
-                                <TableCell style={{ backgroundColor: "black", color: "white" }}>thumbnail url</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {posts.filter((element) => element.title.includes(searchTerm))
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((post) => {
-                                    return (
-                                        <TableRow hover role="checkbox" tabIndex={-1} key={post.id}>
-
-                                            <TableCell >{post.albumId}</TableCell>
-                                            <TableCell >{post.id}</TableCell>
-                                            <TableCell >{post.title}</TableCell>
-                                            <TableCell ><img src={post.url} alt="unable to load" style={{ height: "20px", width: "20px" }} /></TableCell>
-                                            <TableCell ><img src={post.thumbnailUrl} alt="unable to load" style={{ height: "20px", width: "20px" }} /></TableCell>
-                                        </TableRow>
-                                    );
-                                })}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                <TablePagination
-                    rowsPerPageOptions={[5, 10, 20]}
-                    component="div"
-                    count={posts.filter((element) => element.title.includes(searchTerm)).length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                />
-            </Paper>
-        </>
-    );
-}
-
+//             const temp = [...myArr, ...FakeData.slice(start, end)]
+//             setMyArr(temp.filter(el=>el.ispublished===isPublished))
+//         }, 1000);
+//     }
+//   return (
+//     // <div style={{ height: "800px", width: '100%' }}>
+//      <InfiniteScroll
+//                 dataLength={FakeData.length}
+//                 // next={fetchData}
+//                 hasMore={myArr.length < FakeData.length ? true : false}
+//                 loader={<Button variant="contained" onClick={fetchData}>Load More</Button>}
+//                 endMessage={
+//                     <p style={{ textAlign: 'center' }}>
+//                         <b>Yay! You have seen it all</b>
+//                     </p>
+//                 }
+//             >
+//       <DataGrid
+//         rows={FakeData}
+//         columns={columns}
+//         pageSize={5}
+//         rowsPerPageOptions={[5]}
+//         checkboxSelection
+//       />
+//          </InfiniteScroll>
+//     // </div>
+//   );
+// }
