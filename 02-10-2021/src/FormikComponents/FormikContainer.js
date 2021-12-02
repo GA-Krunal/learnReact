@@ -19,14 +19,17 @@ function FormikContainer () {
     otp:""
   }
   const validationSchema = Yup.object({
-    email: Yup.string().required('Required'),
+    email: Yup.string().required('Required')
+    .matches(/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/, "invalid email address"),
     description: Yup.string().required('Required'),
     selectOption: Yup.string().required('Required'),
-    mobileno: Yup.string().matches(phoneRegExp, 'Phone number is not valid')
+    mobileno: Yup.string()
+    .required('Required')
+    .matches(phoneRegExp, 'Phone number is not valid')
     .min(10, 'Must be exactly 10 digits')
     .max(10, 'Must be exactly 10 digits'),
     otp:Yup.string()
-    .required()
+    .required('Required')
     .matches(/^[0-9]+$/, "Must be only digits")
     .min(6, 'Must be exactly 6 digits')
     .max(6, 'Must be exactly 6 digits')

@@ -8,32 +8,63 @@ import Button from '@mui/material/Button';
 import TableBody from '@mui/material/TableBody';
 import Table from '@mui/material/Table';
 import TableHead from '@mui/material/TableHead';
-import ButtonGroup from '@mui/material/ButtonGroup';
+// import ButtonGroup from '@mui/material/ButtonGroup';
 
 const Scroller = () => {
-    const [start, setStart] = useState(10)
+    const [pstart, setpStart] = useState(5)
+    const [dstart, setdStart] = useState(5)
     const [isPublished, setIsPublished] = useState(true)
-    const [end, setEnd] = useState(20)
-    const [myArr, setMyArr] = useState(FakeData.slice(0, 10))
-    const fetchData = () => {
-        setStart(start + 10)
-        setEnd(end + 10)
-        setTimeout(() => {
+    const [pend, setpEnd] = useState(10)
+    const [dend, setdEnd] = useState(10)
+    // const [data, setData] = useState(FakeData)
+    const [publishedArr, setPublishedArr] = useState(FakeData.filter(el=>el.ispublished===isPublished).slice(0 ,5))
+    const [draftArr, setDraftArr] = useState(FakeData.filter(el=>el.ispublished!==isPublished).slice(0 ,5))
+    const [displayArr, setDisplayArr] = useState(publishedArr)
 
-            const temp = [...myArr, ...FakeData.slice(start, end)]
-            setMyArr(temp)
-        }, 1000);
+    console.log(publishedArr , "published array")
+    console.log(draftArr , "draft wala array")
+    console.log(displayArr , "display hone wala array")
+    const fetchData = () => {
+        console.log(pstart , "pstart")
+        if(isPublished ===true){
+            // setTimeout(() => {
+                
+                setpStart(pstart=>pstart+5)
+                setpEnd(pend=>pend+5)
+                setDisplayArr(publishedArr)
+                const temp = [...publishedArr , ...FakeData.filter(el=>el.ispublished===true).slice(pstart ,pend) ]
+                setPublishedArr(temp)
+            // }, 2000);
+        }
+        else{
+            // setTimeout(() => {
+                setdStart(dstart+5)
+                setdEnd(dend+5)
+                const temp = [...draftArr , ...FakeData.filter(el=>el.ispublished!==true).slice(dstart ,dend) ]
+                setDraftArr(temp)
+                setDisplayArr(draftArr)
+                
+            // }, 2000);
+        }
     }
-    return (
+    const handlePublished = ()=>  {
+        setIsPublished(true) 
+        setDisplayArr(publishedArr)
+    }
+    const handleDraft = ()=>{
+        setIsPublished(false) 
+        setDisplayArr(draftArr)
+    }
+     return (
         <>
             {/* <ButtonGroup variant={isPublished? ""}"outlined" aria-label="outlined primary button group"> */}
-                <Button onClick={()=>setIsPublished(true)} variant= {isPublished?"contained" : "outlined"}>published</Button>
-                <Button onClick={()=>setIsPublished(false)} variant= {isPublished?"outlined" : "contained"}>draft</Button>
+                <Button onClick={handlePublished } variant= {isPublished?"contained" : "outlined"}>published</Button>
+               <Button onClick={handleDraft} variant= {isPublished?"outlined" : "contained"}>draft</Button>
             {/* </ButtonGroup> */}
             <InfiniteScroll
-                dataLength={myArr.length}
+                dataLength={publishedArr.length}
                 // next={fetchData}
-                hasMore={myArr.length < FakeData.length ? true : false}
+                hasMore={publishedArr.length < FakeData.length ? true : false}
                 loader={<Button variant="contained" onClick={fetchData}>Load More</Button>}
                 endMessage={
                     <p style={{ textAlign: 'center' }}>
@@ -54,7 +85,7 @@ const Scroller = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {myArr.filter(el=>el.ispublished===isPublished).map((post) => {
+                        {displayArr.map((post) => {
                             return (
                                 <TableRow hover role="checkbox" tabIndex={-1} key={post.id}>
                                     <TableCell >{post.coursename}</TableCell>
