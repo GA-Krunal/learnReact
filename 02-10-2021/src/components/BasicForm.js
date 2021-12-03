@@ -9,8 +9,8 @@ const BasicForm = (props) => {
                 address:<input type="text"/>
                 father's name:<input type="text"/>
                 mother's name:<input type="text"/>
-                <button onClick={props.nextStep}>save&next</button>
             </form>
+                <button onClick={props.nextStep}>save&next</button>
         </div>
     )
 }

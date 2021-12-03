@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Button from '@mui/material/Button';
 const PersonalForm = (props) => {
     return (
         <div>
@@ -7,8 +7,8 @@ const PersonalForm = (props) => {
             <form>
                 enter you name:<input type="text"/>
                 enter your age:<input type="number"/>
-                <button onClick={props.nextStep}>save&next</button>
             </form>
+            <Button variant="contained" onClick={props.nextStep}>NEXT</Button>
         </div>
     )
 }

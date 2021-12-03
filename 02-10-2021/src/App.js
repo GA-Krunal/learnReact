@@ -1,5 +1,8 @@
 import './App.css';
-import MuiDataGrid from './components/MuiDataGrid';
+import HorizontalLabelPositionBelowStepper from './components/TabComponents.js/HorizontalLabelPositionBelowStepper';
+// import BasicTabs from './components/TabComponents.js/BasicTabs';
+// import MuiDataGrid from './components/MuiDataGrid';
+// import Trimmer from './components/Trimmer'
 // import MuiScroller from './components/MuiScroller';
 // import Home from './components/Home';
 // import StepperComp from './components/StepperComp';
@@ -11,11 +14,15 @@ function App() {
 
   return (
     <div className="App">
+      <h2>hello world</h2>
+      <HorizontalLabelPositionBelowStepper/>
+      {/* <BasicTabs/> */}
     {/* <Home/> */}
       {/* <Scroller /> */}
+      {/* <Trimmer/> */}
       {/* <TableData/> */}
       {/* <MuiScroller/> */}
-      <MuiDataGrid/>
+      {/* <MuiDataGrid/> */}
     
     </div>
   );
